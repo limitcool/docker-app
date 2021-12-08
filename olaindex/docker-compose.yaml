@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  olaindex:
+    image: ghcr.io/apocalypsor/olaindex:latest
+    container_name: olaindex
+    ports:
+      - 55880:80
+    volumes:
+      - /home/docker-volume/olaindex/conf:/OLAINDEX/conf
+      - /home/docker-volume/olaindex/storage:/OLAINDEX/storage
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    container_name: olaindex-redis
+    restart: unless-stopped

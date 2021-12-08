@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  vscs:
+    external: false
+    
+services:
+  vscs:
+    image: codercom/code-server:latest
+    container_name: vsc
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - PASSWORD=password
+   #restart: always
+    privileged: true
+    networks:
+      - vscs
+    volumes:
+     #- /home/docker-volume/vsc/.config:/home/coder/.config
+      - /home/docker-volume/vsc/project:/home/coder/project
+    ports:
+      - "9780:8080"

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  qinglong:
+    image: whyour/qinglong:latest
+    container_name: qinglong
+    environment:
+      - hostname=QL
+      - name=QL
+    volumes:
+      - /home/docker-volume/qinglong/config:/ql/config
+      - /home/docker-volume/qinglong/log:/ql/log
+      - /home/docker-volume/qinglong/db:/ql/db
+      - /home/docker-volume/qinglong/scripts:/ql/scripts
+      - /home/docker-volume/qinglong/jbot:/ql/jbot
+      - /home/docker-volume/qinglong/raw:/ql/raw
+      - /home/docker-volume/qinglong/repo:/ql/repo
+      - /home/docker-volume/qinglong/oscript:/ql/oscript
+      
+    ports:
+     - "5500:5700"
+     - "5501:5701"
+    restart: always
